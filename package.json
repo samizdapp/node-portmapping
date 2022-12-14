@@ -1,40 +1,51 @@
 {
-  "name": "node-portmapping",
-  "version": "0.3.0",
-  "description": "Multi-protocol NAT Port Mapping for Node.js based on libplum",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "scripts": {
-    "install": "cmake-js compile",
-    "clean": "cmake-js clean"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/paullouisageneau/node-portmapping.git"
-  },
-  "keywords": [
-    "libplum",
-    "nat",
-    "port-mapping",
-    "peer-to-peer",
-    "pcp",
-    "nat-pmp",
-    "upnp"
-  ],
-  "contributors": [
-    {
-      "name": "Paul-Louis Ageneau",
-      "url": "https://paul-louis.ageneau.org/"
+    "name": "@samizdapp/node-portmapping",
+    "version": "0.3.0",
+    "description": "Multi-protocol NAT Port Mapping for Node.js based on libplum",
+    "main": "lib/index.js",
+    "typings": "lib/index.d.ts",
+    "binary": {
+        "napi_versions": [
+            3
+        ]
+    },
+    "scripts": {
+        "install": "prebuild-install --runtime napi --backend cmake || cmake-js build",
+        "clean": "cmake-js clean",
+        "prebuild": "prebuild --runtime napi --backend cmake-js --all --strip --verbose",
+        "upload": "prebuild --runtime napi --backend cmake-js --upload ${GITHUB_TOKEN}"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/samizdapp/node-portmapping"
+    },
+    "keywords": [
+        "libplum",
+        "nat",
+        "port-mapping",
+        "peer-to-peer",
+        "pcp",
+        "nat-pmp",
+        "upnp"
+    ],
+    "contributors": [
+        {
+            "name": "Paul-Louis Ageneau",
+            "url": "https://paul-louis.ageneau.org/"
+        }
+    ],
+    "license": "MPL-2.0",
+    "gypfile": false,
+    "bugs": {
+        "url": "https://github.com/paullouisageneau/node-portmapping/issues"
+    },
+    "homepage": "https://github.com/paullouisageneau/node-portmapping#readme",
+    "dependencies": {
+        "cmake-js": "^6.2.1",
+        "node-addon-api": "^4.2.0",
+        "prebuild-install": "^5.3.3"
+    },
+    "devDependencies": {
+        "prebuild": "^11.0.4"
     }
-  ],
-  "license": "MPL-2.0",
-  "gypfile": true,
-  "bugs": {
-    "url": "https://github.com/paullouisageneau/node-portmapping/issues"
-  },
-  "homepage": "https://github.com/paullouisageneau/node-portmapping#readme",
-  "dependencies": {
-    "cmake-js": "^6.2.1",
-    "node-addon-api": "^4.2.0"
-  }
 }

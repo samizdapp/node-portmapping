@@ -1,0 +1,42 @@
+name: Prebuild Binaries
+
+on:
+    push:
+        branches:
+            - prebuild
+
+jobs:
+    prebuild-linux:
+        name: Linux
+        runs-on: ubuntu-latest
+        timeout-minutes: 30
+        steps:
+            - run: sudo apt-get install g++-multilib
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 18.x
+            - uses: actions/checkout@v1
+            - run: npm i
+            - run: npx prebuild --runtime napi --backend cmake-js --upload-all -u $GITHUB_TOKEN${{ secrets.GITHUB_TOKEN }}
+    prebuild-macos:
+        name: macOS
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 18.x
+            - uses: actions/checkout@v1
+            - run: npm i
+            - run: npx prebuild --runtime napi --backend cmake-js --upload-all -u $GITHUB_TOKEN${{ secrets.GITHUB_TOKEN }}
+    prebuild-windows:
+        name: Windows
+        runs-on: windows-latest
+        timeout-minutes: 30
+        steps:
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 18.x
+            - uses: actions/checkout@v1
+            - run: npm i
+            - run: npx prebuild --runtime napi --backend cmake-js --upload-all -u $GITHUB_TOKEN${{ secrets.GITHUB_TOKEN }}

@@ -13,7 +13,7 @@
         "install": "prebuild-install --runtime napi --backend cmake || cmake-js build",
         "clean": "cmake-js clean",
         "prebuild": "prebuild --runtime napi --backend cmake-js --all --strip --verbose",
-        "upload": "prebuild --runtime napi --backend cmake-js --upload ${GITHUB_TOKEN}"
+        "upload": "prebuild --runtime napi --backend cmake-js --upload-all -u $GITHUB_TOKEN"
     },
     "repository": {
         "type": "git",

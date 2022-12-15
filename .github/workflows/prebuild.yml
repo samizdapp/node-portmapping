@@ -18,7 +18,7 @@ jobs:
             - uses: actions/checkout@v1
             - run: npm i
             - run: npm run prebuild
-            - run: npx prebuild --runtime napi --backend cmake-js --upload-all $GITHUB_TOKEN${{ secrets.GITHUB_TOKEN }}
+            - run: npx prebuild --runtime napi --backend cmake-js --upload-all -u $GITHUB_TOKEN${{ secrets.GITHUB_TOKEN }}
     prebuild-macos:
         name: macOS
         runs-on: macos-latest
@@ -31,7 +31,7 @@ jobs:
             - run: brew install cmake
             - run: npm i
             - run: npm run prebuild
-            - run: npx prebuild --runtime napi --backend cmake-js --upload-all $GITHUB_TOKEN${{ secrets.GITHUB_TOKEN  }}
+            - run: npx prebuild --runtime napi --backend cmake-js --upload-all -u $GITHUB_TOKEN${{ secrets.GITHUB_TOKEN  }}
     prebuild-windows:
         name: Windows
         runs-on: windows-latest
@@ -43,4 +43,4 @@ jobs:
             - uses: actions/checkout@v1
             - run: npm i
             - run: npm run prebuild
-            - run: npx prebuild --runtime napi --backend cmake-js --upload-all $GITHUB_TOKEN${{ secrets.GITHUB_TOKEN }}
+            - run: npx prebuild --runtime napi --backend cmake-js --upload-all -u $GITHUB_TOKEN${{ secrets.GITHUB_TOKEN }}
